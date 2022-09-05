@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
 
-ZMQ_VERSION=${ZMQ_VERSION:-"4.3.4"}
+ZMQ_VERSION=${ZMQ_VERSION:-"4e193f36fc7d0f729a7c87d55fff18d8c0db5ebf"}
 
-SRC_URL="https://github.com/zeromq/libzmq/releases/download/v${ZMQ_VERSION}/zeromq-${ZMQ_VERSION}.tar.gz"
-SRC_DIR="zeromq-${ZMQ_VERSION}"
-TARBALL="zeromq-${ZMQ_VERSION}.tar.gz"
+SRC_URL="https://github.com/zeromq/libzmq/archive/${ZMQ_VERSION}.tar.gz"
+SRC_DIR="libzmq-${ZMQ_VERSION}"
+TARBALL="libzmq-${ZMQ_VERSION}.tar.gz"
 BUILD_OPTIONS=""
 
 if [ -n "${WINDIR}" ]; then
