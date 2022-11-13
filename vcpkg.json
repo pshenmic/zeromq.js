@@ -1,0 +1,12 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg/master/scripts/vcpkg.schema.json",
+  "name": "zeromqjs",
+  "version-string": "6.0.0-beta.6",
+  "builtin-baseline": "a3df696929b28195b0d7a477ba6cd16dba48fa52",
+  "dependencies": [
+    {
+      "name": "libsodium",
+      "version>=": "1.0.18#6"
+    }
+  ]
+}
