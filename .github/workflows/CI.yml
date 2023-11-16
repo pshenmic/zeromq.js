@@ -79,7 +79,7 @@ jobs:
             docker: node:20-alpine
             docker_cmd: apk add --no-cache pkgconfig curl tar python3 make gcc g++ cmake musl-dev && npm i -g pnpm && pnpm install && pnpm run prebuild
             node_version: 20
-            node_arch: x64
+            node_arch: arm64
             ARCH: arm64
             cpp_arch: amd64_arm64
             zmq_draft: false
