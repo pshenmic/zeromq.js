@@ -14,7 +14,7 @@ jobs:
       matrix:
         os:
           - ubuntu-22.04
-      #    - windows-2022
+          - windows-2022
         node_version:
           - 20
         node_arch:
@@ -31,70 +31,42 @@ jobs:
           - ""
 
         include:
-#          - os: windows-2022
-#            node_version: 20
-#            node_arch: x86
-#            ARCH: x86
-#            cpp_arch: amd64_x86
-#            zmq_draft: false
-#
-#          # - os: windows-2022
-#          #   node_version: 20
-#          #   node_arch: x64
-#          #   ARCH: arm64
-#          #   cpp_arch: amd64_arm64
-#          #   zmq_draft: false
-#
-#          - os: macos-13
-#            node_version: 20
-#            node_arch: x64
-#            ARCH: x86_64
-#            cpp_arch: x64
-#            zmq_draft: false
-#
-#          - os: macos-13
-#            node_version: 20
-#            node_arch: x64
-#            ARCH: arm64
-#            cpp_arch: amd64_arm64
-#            zmq_draft: false
-#
-#          - os: ubuntu-22.04
-#            docker: node:20-alpine
-#            docker_cmd: apk add --no-cache pkgconfig curl tar python3 make gcc g++ cmake musl-dev && npm i -g pnpm && pnpm install && pnpm run prebuild
-#            node_version: 20
-#            node_arch: x64
-#            ARCH: x64
-#            cpp_arch: x64
-#            zmq_draft: false
-#
-#          - os: ubuntu-22.04
-#            node_version: 20
-#            node_arch: x64
-#            ARCH: arm64
-#            cpp_arch: amd64_arm64
-#            zmq_draft: false
-
-          - os: ubuntu-22.04
-            docker: node:20-alpine
-            docker_arch: linux/amd64
-            docker_cmd: apk add --no-cache pkgconfig curl tar python3 make gcc g++ cmake musl-dev && npm i -g pnpm && pnpm install && pnpm run prebuild
+          - os: windows-2022
             node_version: 20
-            node_arch: amd64
-            ARCH: x64
+            node_arch: x86
+            ARCH: x86
+            cpp_arch: amd64_x86
+            zmq_draft: false
+
+          # - os: windows-2022
+          #   node_version: 20
+          #   node_arch: x64
+          #   ARCH: arm64
+          #   cpp_arch: amd64_arm64
+          #   zmq_draft: false
+
+          - os: macos-13
+            node_version: 20
+            node_arch: x64
+            ARCH: x86_64
             cpp_arch: x64
             zmq_draft: false
 
-          - os: ubuntu-22.04
-            docker: node:20-alpine
-            docker_arch: linux/arm64
-            docker_cmd: apk add --no-cache pkgconfig curl tar python3 make gcc g++ cmake musl-dev && npm i -g pnpm && pnpm install && pnpm run prebuild
+          - os: macos-13
             node_version: 20
-            node_arch: arm64
+            node_arch: x64
             ARCH: arm64
             cpp_arch: amd64_arm64
             zmq_draft: false
 
+          - os: ubuntu-22.04
+            docker: node:20-alpine
+            docker_cmd: apk add --no-cache pkgconfig curl tar python3 make gcc g++ cmake musl-dev && npm i -g pnpm && pnpm install && pnpm run prebuild
+            node_version: 20
+            node_arch: x64
+            ARCH: x64
+            cpp_arch: x64
+            zmq_draft: false
 
     env:
       ZMQ_DRAFT: ${{ matrix.zmq_draft }}
