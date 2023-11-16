@@ -19,6 +19,7 @@ jobs:
           - 20
         node_arch:
           - x64
+          - arm64
         cpp_arch:
           - x64
         ARCH:
