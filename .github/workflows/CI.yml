@@ -160,9 +160,9 @@ jobs:
         if: ${{ matrix.docker }}
         run: |
           docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
-          docker pull ${{ matrix.docker }} --platform ${{ matrix.docker_arch }}
+          docker pull ${{ matrix.docker }}
           docker tag ${{ matrix.docker }} builder
-          docker run --platform ${{ matrix.docker_arch }} --volume ${{ github.workspace }}:/app --workdir /app --privileged builder sh -c "${{ matrix.docker_cmd }}"
+          docker run --volume ${{ github.workspace }}:/app --workdir /app --privileged builder sh -c "${{ matrix.docker_cmd }}"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
