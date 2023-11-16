@@ -19,7 +19,6 @@ jobs:
           - 20
         node_arch:
           - x64
-          - arm64
         cpp_arch:
           - x64
         ARCH:
@@ -78,12 +77,13 @@ jobs:
 
           - os: ubuntu-22.04
             docker: node:20-alpine
+            docker_arch: linux/amd64
             docker_cmd: apk add --no-cache pkgconfig curl tar python3 make gcc g++ cmake musl-dev && npm i -g pnpm && pnpm install && pnpm run prebuild
-            node_version: 20
-            node_arch: arm64
-            ARCH: arm64
-            cpp_arch: amd64_arm64
-            zmq_draft: false
+
+          - os: ubuntu-22.04
+            docker: node:20-alpine
+            docker_arch: linux/arm64
+            docker_cmd: apk add --no-cache pkgconfig curl tar python3 make gcc g++ cmake musl-dev && npm i -g pnpm && pnpm install && pnpm run prebuild
 
 
     env:
@@ -150,9 +150,9 @@ jobs:
         if: ${{ matrix.docker }}
         run: |
           docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
-          docker pull ${{ matrix.docker }}
+          docker pull ${{ matrix.docker }} --platform ${{ matrix.docker_arch }}
           docker tag ${{ matrix.docker }} builder
-          docker run --volume ${{ github.workspace }}:/app --workdir /app --privileged builder sh -c "${{ matrix.docker_cmd }}"
+          docker run --platform ${{ matrix.docker_arch }} --volume ${{ github.workspace }}:/app --workdir /app --privileged builder sh -c "${{ matrix.docker_cmd }}"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
